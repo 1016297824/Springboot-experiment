@@ -60,20 +60,28 @@ public class UserRepository {
      * @return
      */
     public Address updateAddress_Find(int aid, int uid) {
+
         User user = em.find(User.class, uid);
 
         Address address = em.find(Address.class, aid);
         address.setUser(user);
-
         em.flush();
         return address;
     }
 
     public Address updateAddress_Merge(int aid,int uid){
+        User user = new User();
+        user.setId(uid);
+        User user1 = em.merge(user);
+        em.refresh(user1);
+
         Address address = new Address();
         address.setId(aid);
-        address.setUser(new User(uid));
         Address address1 = em.merge(address);
+        em.refresh(address1);
+
+        address1.setUser(user1);
+
         return address1;
     }
 
