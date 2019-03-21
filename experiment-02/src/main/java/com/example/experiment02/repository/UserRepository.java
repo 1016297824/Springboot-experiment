@@ -4,7 +4,6 @@ import com.example.experiment02.entity.Address;
 import com.example.experiment02.entity.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
@@ -33,7 +32,11 @@ public class UserRepository {
      * @return
      */
     public Address addAddress(Address address, int uid) {
-        return null;
+        User user = em.find(User.class, uid);
+        address.setUser(user);
+        em.persist(address);
+        em.refresh(address);
+        return address;
     }
 
     /**
@@ -43,7 +46,10 @@ public class UserRepository {
      * @return
      */
     public User updateUser(int uid, String newName) {
-        return null;
+        User user = em.find(User.class, uid);
+        user.setName(newName);
+        em.flush();
+        return user;
     }
 
     /**
@@ -53,8 +59,22 @@ public class UserRepository {
      * @param uid
      * @return
      */
-    public Address updateAddress(int aid, int uid) {
-        return null;
+    public Address updateAddress_Find(int aid, int uid) {
+        User user = em.find(User.class, uid);
+
+        Address address = em.find(Address.class, aid);
+        address.setUser(user);
+
+        em.flush();
+        return address;
+    }
+
+    public Address updateAddress_Merge(int aid,int uid){
+        Address address = new Address();
+        address.setId(aid);
+        address.setUser(new User(uid));
+        Address address1 = em.merge(address);
+        return address1;
     }
 
     /**
