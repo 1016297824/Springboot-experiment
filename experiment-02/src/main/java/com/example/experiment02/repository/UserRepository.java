@@ -6,6 +6,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -91,18 +94,28 @@ public class UserRepository {
      * @return
      */
     public List<Address> listAddresses(int uid) {
-        return List.of();
+        User user = em.find(User.class, uid);
+        ArrayList<Address> addressList = new ArrayList<>(user.getAddresses());
+        //List.of(addressList);
+        return addressList;
     }
 
+    /**
+     * 删除指定地址
+     * @param aid
+     * @return
+     */
     public void removeAddress(int aid) {
-
+        Address address = em.find(Address.class, 3);
+        em.remove(address);
     }
 
     /**
      * 删除用户，设置级联操作或手动删除相关地址
      * @param uid
      */
-    public void remaveUser(int uid) {
-
+    public void removeUser(int uid) {
+        User user = em.find(User.class, 2);
+        em.remove(user);
     }
 }

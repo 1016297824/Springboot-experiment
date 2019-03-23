@@ -15,6 +15,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Priority;
+import java.util.List;
 import java.util.PriorityQueue;
 
 @RunWith(SpringRunner.class)
@@ -25,38 +26,65 @@ public class UserRepositoryTest {
     private UserRepository userRepository;
 
     @Test
-    public void addUser() {
+    public void addUserTest() {
         User user = new User("ZK");
         User user1 = userRepository.addUser(user);
-        User user2 = userRepository.addUser(new User("FLJ"));
         log.debug("{}",user1.getInsertTime());
+
+        User user2 = userRepository.addUser(new User("FLJ"));
         log.debug("{}",user2.getInsertTime());
+
+        User user3 = userRepository.addUser(new User("GPX"));
+        log.debug("{}",user3.getInsertTime());
     }
 
     @Test
-    public void addAddress(){
-        Address address = userRepository.addAddress(new Address("753"), 1);
-        log.debug("{}",address.getInsertTime());
-
-        Address address1 = userRepository.addAddress(new Address("748"), 2);
+    public void addAddressTest(){
+        Address address1 = userRepository.addAddress(new Address("753"), 1);
         log.debug("{}",address1.getInsertTime());
+
+        Address address2 = userRepository.addAddress(new Address("748"), 2);
+        log.debug("{}",address2.getInsertTime());
+
+        Address address3 = userRepository.addAddress(new Address("748"), 1);
+        log.debug("{}",address3.getInsertTime());
     }
 
     @Test
-    public void updateUser() {
+    public void updateUserTest() {
         User user = userRepository.updateUser(2, "FLJ-01");
         log.debug(user.getName());
     }
 
     @Test
-    public void updateAddress_Find(){
+    public void updateAddress_FindTest(){
         Address address = userRepository.updateAddress_Find(1, 2);
         log.debug("{}",address.getUser().getId());
     }
 
     @Test
-    public void updateAddress_Merge() {
+    public void updateAddress_MergeTest() {
         Address address = userRepository.updateAddress_Merge(1, 1);
         log.debug("{}",address.getUser().getId());
+    }
+
+
+    @Test
+    public void listAddressesTest() {
+        List<Address> addressList = userRepository.listAddresses(3);
+        for (Address address :
+                addressList) {
+            log.debug("{}",address.getDetail());
+        }
+    }
+
+    @Test
+    public void removeAddressTest() {
+        userRepository.removeAddress(3);
+    }
+
+    @Test
+    public void removeUserTest() {
+        userRepository.removeUser(2);
     }
 }
