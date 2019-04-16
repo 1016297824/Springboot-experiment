@@ -1,0 +1,9 @@
+###
+
+GET http://localhost:8080/api/practise/login
+
+###
+
+GET http://localhost:8080/api/practise/addresses
+
+###
