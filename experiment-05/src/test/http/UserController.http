@@ -1,0 +1,13 @@
+###
+
+GET http://localhost:8080/api/Index
+
+###
+
+GET http://localhost:8080/api/Users
+
+###
+
+GET http://localhost:8080/api/Users/1
+
+###

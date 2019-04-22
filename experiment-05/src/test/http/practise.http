@@ -4,6 +4,54 @@ GET http://localhost:8080/api/practise/login
 
 ###
 
-GET http://localhost:8080/api/practise/addresses
+GET http://localhost:8080/api/practise/addresses1
+
+###
+
+GET http://localhost:8080/api/practise/addresses2
+
+###
+
+POST http://localhost:8080/api/practise/addresses3
+Content-Type: application/json
+
+{
+  "detail": "753",
+  "comment": "123456789"
+}
+
+###
+
+POST http://localhost:8080/api/practise/addresses4
+Content-Type: application/json
+
+{
+  "detail": "753",
+  "comment": "123456789"
+}
+
+###
+
+GET http://localhost:8080/api/practise/news1/1
+
+###
+
+GET http://localhost:8080/api/practise/news2/2
+
+###
+
+GET http://localhost:8080/api/service/exception
+
+###
+
+POST http://localhost:8080/api/service/user
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "ZK",
+  "age": 17,
+  "email": "abc"
+}
 
 ###
