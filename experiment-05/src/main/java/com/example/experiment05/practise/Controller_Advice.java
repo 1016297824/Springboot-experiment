@@ -20,7 +20,7 @@ public class Controller_Advice {
                     strBuilder.append(e.getField());
                     strBuilder.append(":");
                     strBuilder.append(e.getDefaultMessage());
-                    strBuilder.append(":");
+                    strBuilder.append(";");
                 });
         return Map.of("message",strBuilder.toString()+" ");
     }
