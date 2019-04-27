@@ -13,6 +13,7 @@
         <module name="experiment-04" />
         <module name="experiment-05" />
         <module name="experiment-06" />
+        <module name="experiment-07" />
       </profile>
     </annotationProcessing>
   </component>
@@ -24,6 +25,7 @@
       <module name="experiment-04" options="-parameters" />
       <module name="experiment-05" options="-parameters" />
       <module name="experiment-06" options="-parameters" />
+      <module name="experiment-07" options="-parameters" />
     </option>
   </component>
 </project>
