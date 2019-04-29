@@ -36,7 +36,7 @@ public class EncryptorComponent {
             String json = Encryptors.text(secretKey, salt).decrypt(encryptString);
             return objectMapper.readValue(json, Map.class);
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "未登录");
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "未登录！");
         }
     }
 }
