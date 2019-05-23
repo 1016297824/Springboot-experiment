@@ -18,6 +18,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api")
 public class UserController {
+
     private Map<String, User> userMap = new HashMap<>();
 
     @Autowired

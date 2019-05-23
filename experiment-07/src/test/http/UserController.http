@@ -34,7 +34,7 @@ POST http://localhost:8080/api/login
 Content-Type: application/json
 
 {
-  "userName": "ZK1",
+  "userName": "ZK",
   "password": "123457"
 }
 
