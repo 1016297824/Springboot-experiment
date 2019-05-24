@@ -41,6 +41,6 @@ Content-Type: application/json
 ###
 
 GET http://localhost:8080/api/index
-Authorization: e3eb39882b0f09d6e268e58b75019b525cd3c0404bbe86613b4b6def597780c7
+Authorization: a140060d5e580cd60ce00ade1483d3514872358cfe1f0b82c5fc6507c315f15a
 
 ###
